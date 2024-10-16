@@ -40,7 +40,7 @@ const Travel: React.FC = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/flightSearch", {
+      const response = await fetch("https://tourism-travel-interface.vercel.app/flightSearch", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
