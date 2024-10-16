@@ -25,12 +25,12 @@ const Travel: React.FC = () => {
   const handleSearch = async () => {
     setIsSubmitted(true);
     setError("");
-
+  
     if (!/^[A-Z]{3}$/.test(origin) || !/^[A-Z]{3}$/.test(destination)) {
       setError("Os códigos de localização devem ser códigos IATA de 3 letras.");
       return;
     }
-
+  
     if (
       !/^\d{4}-\d{2}-\d{2}$/.test(checkint) ||
       !/^\d{4}-\d{2}-\d{2}$/.test(checkout)
@@ -38,9 +38,9 @@ const Travel: React.FC = () => {
       setError("As datas devem estar no formato YYYY-MM-DD.");
       return;
     }
-
+  
     try {
-      const response = await fetch("https://tourism-travel-interface.vercel.app/flightSearch", {
+      const response = await fetch("https://tourism-travel.onrender.com/api/flightSearch", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -53,17 +53,17 @@ const Travel: React.FC = () => {
           passengers: passenger,
         }),
       });
-
+  
       if (!response.ok) {
         const errorDetails = await response.text()
         console.error("Erro na resposta:", errorDetails)
         setError(`Erro ao buscar voos: ${response.statusText}`);
         return;
       }
-
+  
       const data = await response.json();
       console.log("Flight search result:", data)
-
+  
       if (data && data.data) {
         setFlights(data.data)
         setError("");
@@ -75,7 +75,7 @@ const Travel: React.FC = () => {
       console.error("Erro ao buscar voos:", err);
       setError("Falha ao buscar voos.");
     }
-  };
+  };  
 
   return (
     <div>
