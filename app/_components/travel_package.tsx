@@ -158,7 +158,7 @@ const Travel: React.FC = () => {
             <Button
               variant="default"
               type="submit"
-              className="bg-[#FF914D] text-white text-base w-[150px] h-[26px] lg:w-[170px] lg:h-[47px] md:w-[118px] md:h-[26px] md:text-xs lg:text-lg md:rounded-lg rounded-xl"
+              className="bg-[#FF914D] text-black text-base w-[150px] h-[26px] lg:w-[170px] lg:h-[47px] md:w-[118px] md:h-[26px] md:text-xs lg:text-lg md:rounded-lg rounded-xl"
             >
               Procurar pacotes
             </Button>
