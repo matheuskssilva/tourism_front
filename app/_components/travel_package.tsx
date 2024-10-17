@@ -40,7 +40,7 @@ const Travel: React.FC = () => {
     }
   
     try {
-      const response = await fetch("https://tourism-travel.onrender.com/api/flightSearch", { 
+      const response = await fetch("https://tourism-back-3hje.onrender.com/api/flightSearch", { 
         method: "POST",
         headers: {
           "Content-Type": "application/json",
