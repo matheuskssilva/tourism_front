@@ -72,6 +72,7 @@ export const location = [
     { name: "Santiago", code: "SCL", city: "Santiago", country: "Chile" },
     { name: "Rio de Janeiro", code: "GIG", city: "Rio de Janeiro", country: "Brasil" },
     { name: "Recife", code: "REC", city: "Recife", country: "Brasil" },
+    { name: "Guarulhos", code: "GRU", city: "São Paulo", country: "Brasil" }
 ]
 
 export const destinations = [
@@ -137,4 +138,5 @@ export const destinations = [
     { name: "Santiago", code: "SCL", city: "Santiago", country: "Chile" },
     { name: "Rio de Janeiro", code: "GIG", city: "Rio de Janeiro", country: "Brasil" },
     { name: "Recife", code: "REC", city: "Recife", country: "Brasil" },
+    { name: "Guarulhos", code: "GRU", city: "São Paulo", country: "Brasil" }
 ]
