@@ -1,103 +1,114 @@
-import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import Image from "next/image";
+"use client";
 
+import {
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  useDisclosure,
+  Box,
+  Checkbox,
+  Input,
+  Text,
+} from "@chakra-ui/react";
+import Image from "next/image";
 import logo from "../../images/logo.svg";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import React from "react";
 
 const Login = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="default" className="bg-[#3F51B5] md:w-[100px] md:h-11 md:text-xl lg:w-[170px] lg:h-11 lg:text-2xl text-white font-bold">Login</Button>
-      </DialogTrigger>
-      <DialogContent className="w-[350px] h-[700px] md:h-[732px] md:w-[700px] mt-10 bg-[#002133] justify-center ">
-        <DialogHeader className="flex justify-center items-center space-y-0 h-[250px]">
-          <DialogTitle>
-            <Image src={logo} alt="Logo" className="md:w-[150px]" />
-          </DialogTitle>
-          <DialogDescription className="text-center pt-5">
-            <h1 className="text-white text-2xl md:text-3xl font-semibold">
-              Bem-vindo(a)!
-            </h1>
-            <p className="text-white w-[250px] leading-6 md:w-full line text-[16px] mt-3">
-              Por favor selecione um provedor para fazer login na sua conta
-            </p>
-          </DialogDescription>
-        </DialogHeader>
+    <>
+      <Button
+        onClick={onOpen}
+        bg="#3F51B5"
+        color="white"
+        fontWeight="bold"
+        height="44px"
+        fontSize={["xl", "2xl"]}
+        className="md:w-[100px] lg:w-[170px]"
+      >
+        Login
+      </Button>
 
-        <div className="flex flex-col justify-center items-center h-[50px]">
-          <div className="flex gap-4 md:gap-16 p-0 mt-8">
-            <Button variant="default">Apple</Button>
-            <Button variant="default">Google</Button>
-            <Button variant="default">Github</Button>
-          </div>
+      <Modal isOpen={isOpen} onClose={onClose} size="lg">
+        <ModalOverlay />
+        <ModalContent bg="#002133" py={6}>
+          <ModalHeader>
+            <Box display="flex" justifyContent="center" alignItems="center">
+              <Image src={logo} alt="Logo" width={150} height={150} />
+            </Box>
+          </ModalHeader>
+          <ModalCloseButton color="white" />
 
-          <div className="flex items-center gap-4 md:gap-4 mt-10 h-[50px]">
-            <hr
-              style={{
-                height: "1px",
-                backgroundColor: "white",
-                border: "none",
-              }}
-              className="w-24 md:w-[190px]"
-            />
-            <h2 className="text-white font-bold text-base">OU</h2>
-            <hr
-              style={{
-                height: "1px",
-                backgroundColor: "white",
-                border: "none",
-              }}
-              className="w-24 md:w-[190px]"
-            />
-          </div>
-        </div>
+          <ModalBody>
+            <Box textAlign="center">
+              <Text fontSize={["2xl", "3xl"]} fontWeight="semibold" color="white">
+                Bem-vindo(a)!
+              </Text>
+              <Text fontSize="md" color="white" mt={3} mb={6}>
+                Por favor, selecione um provedor para fazer login na sua conta.
+              </Text>
+            </Box>
 
-        <div className="flex flex-col gap-4 md:gap-16 mt-10 text-start w-[260px] md:w-[430px] md:ml-4 h-[150px] ">
-          <div className="flex flex-col gap-4">
-            <Label htmlFor="email" className="text-base text-white">
-              Email
-            </Label>
-            <Input type="email" id="email" placeholder="Digite seu e-mail..." />
-            <Label htmlFor="password" className="text-base text-white">
-              Crie uma Senha
-            </Label>
-            <Input type="password" id="password" placeholder="******" />
-          </div>
-        </div>
+            <Box display="flex" justifyContent="center" gap={[4, 16]} mt={8}>
+              <Button colorScheme="gray">Apple</Button>
+              <Button colorScheme="gray">Google</Button>
+              <Button colorScheme="gray">Github</Button>
+            </Box>
 
-        <div className="flex flex-col gap-2 mt-5 md:ml-4">
-          <div className="flex items-center space-x-2 ">
-            <Checkbox id="terms" />
-            <Label htmlFor="terms" className="text-white text-xs">
-              Aceito os termos e condições
-            </Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox id="terms" />
-            <Label htmlFor="terms" className="text-white text-xs">
-              Manter conectado
-            </Label>
-          </div>
-        </div>
-        <Button
-          type="submit"
-          className="bg-[#FF914D] text-white text-lg w-[260px] md:w-[430px] md:ml-4 mb-10"
-        >
-          Login
-        </Button>
-      </DialogContent>
-    </Dialog>
+            <Box display="flex" alignItems="center" justifyContent="center" gap={4} mt={10}>
+              <Box width={["100px", "190px"]} height="1px" bg="white" />
+              <Text color="white" fontWeight="bold">
+                OU
+              </Text>
+              <Box width={["100px", "190px"]} height="1px" bg="white" />
+            </Box>
+
+            <Box mt={10} mx="auto" width={["260px", "430px"]}>
+              <Text color="white" mb={2}>
+                Email
+              </Text>
+              <Input type="email" placeholder="Digite seu e-mail..." mb={4} />
+              <Text color="white" mb={2}>
+                Crie uma Senha
+              </Text>
+              <Input type="password" placeholder="******" />
+            </Box>
+
+            <Box mt={5}>
+              <Box display="flex" alignItems="center" gap={2}>
+                <Checkbox colorScheme="orange" />
+                <Text color="white" fontSize="sm">
+                  Aceito os termos e condições
+                </Text>
+              </Box>
+              <Box display="flex" alignItems="center" gap={2} mt={2}>
+                <Checkbox colorScheme="orange" />
+                <Text color="white" fontSize="sm">
+                  Manter conectado
+                </Text>
+              </Box>
+            </Box>
+          </ModalBody>
+
+          <ModalFooter display="flex" justifyContent="center">
+            <Button
+              colorScheme="orange"
+              width={["260px", "430px"]}
+              onClick={onClose}
+            >
+              Login
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 
